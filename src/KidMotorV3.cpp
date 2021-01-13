@@ -55,6 +55,7 @@ uint8_t KidMotorV3::read_bytes(uint8_t address, uint8_t *buff, int n) {
 
 void KidMotorV3::setMotor(uint8_t ch, uint8_t dir, uint8_t speed) {
   ch = ch - 1;
+  speed = speed * (80.0 / 100.0);
   this->write(ch == 0 ? 0x00 : 0x01, (dir << 7) | (speed & 0x7F));
 }
 
